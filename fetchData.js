@@ -11,9 +11,10 @@ async function fetchData() {
   try {
     const response = await axios.get(url);
     fs.writeFileSync(dataPath, JSON.stringify(response.data, null, 2));
-    console.log('Data fetched and stored successfully.');
-  } catch (error) {
-    console.error('Error fetching data:', error);
+    console.log('Data was fetched and stored successfully.');
+  } 
+  catch(error) {
+    console.error('Error while fetching data:', error);
   }
 }
 

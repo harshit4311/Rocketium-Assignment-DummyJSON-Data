@@ -13,33 +13,39 @@ app.use(express.json());
 // Endpoint to get the dummy data
 app.get('/get-data', (req, res) => {
   fs.readFile(dataPath, (err, data) => {
-    if (err) {
+    if(err) {
       return res.status(500).send('Error reading data file');
     }
 
-    let jsonData = JSON.parse(data);
+    let json_data = JSON.parse(data);
 
-    // Filtering
+    // Filter the data
     const filter = req.query.filter;
-    if (filter) {
-      jsonData = jsonData.filter(item => item.includes(filter));
+    if(filter) {
+      json_data = json_data.filter(item => item.includes(filter));
     }
 
-    // Sorting
+    // Sort the data
     const sort = req.query.sort;
-    if (sort) {
-      jsonData = jsonData.sort((a, b) => {
-        if (a[sort] < b[sort]) return -1;
-        if (a[sort] > b[sort]) return 1;
+    if(sort) {
+      json_data = json_data.sort((a, b) => {
+        if(a[sort] < b[sort]) {
+          return -1;
+        }
+
+        if(a[sort] > b[sort]) {
+          return 1;
+        }
+
         return 0;
       });
     }
 
-    res.json(jsonData);
+    res.json(json_data);
   });
 });
 
-// Start the server
+// Server start
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
