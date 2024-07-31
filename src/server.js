@@ -6,11 +6,11 @@ const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const dataPath = path.join(__dirname, 'src', 'data.json'); // After
+const dataPath = path.join(__dirname, 'data.json');
 
 app.use(express.json());
 
-// Endpoint to get the dummy data
+// Get dummy data
 app.get('/get-data', (req, res) => {
   fs.readFile(dataPath, (err, data) => {
     if(err) {
