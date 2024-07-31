@@ -1,3 +1,5 @@
+// Script to fetch and store the dummy data.
+
 const axios = require('axios');
 const fs = require('fs');
 const path = require('path');

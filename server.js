@@ -1,4 +1,5 @@
-// server.js
+// Script to set up a Node.js server using the Express.js framework.
+
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
